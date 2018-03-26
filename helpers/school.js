@@ -1,5 +1,9 @@
 var database = require('../models');
 
+
+//GET
+///Gets all school news
+// 'api/school'
 exports.getAllSchools = function(request, response){
    database.School.find()
    .then(function(schools){
@@ -10,6 +14,10 @@ exports.getAllSchools = function(request, response){
    })
 }
 
+//POST
+///Creates a new School Obj
+//should occur on sign up for new user?
+// 'api/school'
 exports.createNewSchool = function(request, response) {
    database.School.create(request.body)
    .then(function(newSchool){
@@ -20,6 +28,9 @@ exports.createNewSchool = function(request, response) {
    })
 }
 
+//GET
+///Gets a single School obj
+// 'api/school/:schoolId'
 exports.getSchool = function(request, response){
     database.School.findById(request.params.schoolId)
     .then(function(foundSchool){
@@ -29,6 +40,10 @@ exports.getSchool = function(request, response){
         response.send(err);
     })
 }
+
+//PUT
+///Updates a School Obj
+// 'api/school/:schoolId'
 
 exports.updateSchool = function(request, response){
    database.School.findOneAndUpdate({_id: request.params.schoolId}, request.body, {new: true})
@@ -40,6 +55,10 @@ exports.updateSchool = function(request, response){
     })
 }
 
+//Delete
+///Deletes a School Obj
+// 'api/school/:schoolId'
+//// TODO: Delete all associated school data after 30 days?
 exports.deleteSchool = function(request, response){
    database.School.remove({_id: request.params.schoolId})
    .then(function(){

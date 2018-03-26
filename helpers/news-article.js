@@ -1,6 +1,9 @@
 var database = require('../models');
 var NewsArticle = require('../models/news-article')
 
+//GET
+///Gets all school news
+// 'api/news/:schoolId'
 exports.getSchoolNews = function(request, response){
 
     NewsArticle.find({ school: request.params.schoolId }, function(err, news){
@@ -11,6 +14,9 @@ exports.getSchoolNews = function(request, response){
     });
 }
 
+//POST
+///Creates a new school News Article Obj
+// 'api/news/:schoolId'
 exports.createNewsStory = function(request, response) {
    database.School.findById(request.params.schoolId)
    .then(function(school) {
@@ -37,6 +43,22 @@ exports.createNewsStory = function(request, response) {
    })
 }
 
+//GET
+/// Gets a specific news article with NewsId
+// 'api/news/article/:newsId'
+exports.getNewsStory = function(request, response){
+  database.NewsArticle.findById(request.params.newsId)
+  .then(function(newsStory){
+    response.json(newsStory);
+  })
+  .catch(function(err){
+    response.send(err);
+  })
+}
+
+//PUT
+/// Updates a specific news article with NewsId
+// 'api/news/article/:newsId'
 exports.updateNewsArticle = function(request, response){
    database.NewsArticle.findOneAndUpdate({ _id: request.params.newsId }, request.body, {new: true})
    .then(function(news){
