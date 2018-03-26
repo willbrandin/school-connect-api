@@ -1,6 +1,6 @@
 var database = require('../models');
 
-exports.getSchools = function(request, response){
+exports.getAllSchools = function(request, response){
    database.School.find()
    .then(function(schools){
        response.json(schools);
@@ -10,7 +10,7 @@ exports.getSchools = function(request, response){
    })
 }
 
-exports.createSchool = function(request, response) {
+exports.createNewSchool = function(request, response) {
    database.School.create(request.body)
    .then(function(newSchool){
        response.json(newSchool);

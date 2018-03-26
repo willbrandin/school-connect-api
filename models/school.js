@@ -1,4 +1,11 @@
 var mongoose = require("mongoose");
+//var SchoolInfo = require('./school-info');
+var MobileAppConfig = require('./mobile-app-config');
+var NewsArticle = require('./news-article');
+var CalendarEvent = require('./calendar-event');
+var Link = require('./link');
+
+let Schema = mongoose.Schema;
 
 var schoolSchema = new mongoose.Schema({
   name: {
@@ -12,7 +19,24 @@ var schoolSchema = new mongoose.Schema({
   state: {
     type: String,
     required: 'State cannot be blank'
-  }
+  },
+  mobileAppConfig: {
+    type: Schema.Types.ObjectId,
+    //required: true,
+    ref: 'MobileAppConfig'
+  },
+  newsArticles: [{
+    type: Schema.Types.ObjectId,
+    ref: 'NewsArticle'
+  }],
+  calendarEvents: [{
+    type: Schema.Types.ObjectId,
+    ref: 'CalendarEvent'
+  }],
+  links: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Link'
+  }]
 
 });
 
