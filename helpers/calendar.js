@@ -74,5 +74,4 @@ exports.updateCalendarEvent = function(request, response){
 }
 
 
-
 module.exports = exports

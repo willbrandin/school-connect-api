@@ -6,6 +6,7 @@ var express = require("express"),
 var schoolRoutes = require("./routes/school");
 var newsRoutes = require('./routes/news');
 var calendarRoutes = require('./routes/calendar');
+var linkRoutes = require('./routes/links')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/school', schoolRoutes)
 app.use('/api/news', newsRoutes)
 app.use('/api/calendar', calendarRoutes)
-// app.use('/api/links', linkRoutes)
+app.use('/api/links', linkRoutes)
 // app.use('/api/config', mobileAppConfigRoutes)
 
 var port = 3000;
