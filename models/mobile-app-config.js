@@ -13,6 +13,11 @@ let mobileAppConfigSchema = new Schema({
   secondaryColor: {
     type: String,
     required: 'secondaryColor cannot be blank'
+  },
+  school: {
+    type: Schema.Types.ObjectId,
+    ref: 'School',
+    required: true
   }
 });
 

@@ -7,11 +7,11 @@ let calendarEventSchema = new Schema({
     required: 'Event needs a location'
   },
   startDate: {
-    type: String,
+    type: Date,
     required: 'Event needs start date'
   },
   endDate: {
-    type: String,
+    type: Date,
     required: false
   },
   description: {
@@ -21,6 +21,11 @@ let calendarEventSchema = new Schema({
   title: {
     type: String,
     required: 'Event needs title'
+  },
+  school: {
+    type: Schema.Types.ObjectId,
+    ref: 'School',
+    required: true
   }
 });
 

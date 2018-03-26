@@ -11,7 +11,7 @@ let newsArticleSchema = new Schema({
     required: false
   },
   pubDate: {
-    type: String,
+    type: Date,
     required: true,
     default:  Date.now()
   },

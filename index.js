@@ -16,7 +16,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 app.use('/api/schools', schoolRoutes)
-app.use('/api/schools/news', newsRoutes)
+app.use('/api/news', newsRoutes)
+// app.use('/api/calendar', calendarRoutes)
+// app.use('/api/links', linkRoutes)
+// app.use('/api/config', mobileAppConfigRoutes)
 
 var port = 3000;
 app.listen(port, function(){

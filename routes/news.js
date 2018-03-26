@@ -6,5 +6,7 @@ router.route('/:schoolId')
   .get(newsHelpers.getSchoolNews)
   .post(newsHelpers.createNewsStory)
 
+router.route('/:newsId')
+  .put(newsHelpers.updateNewsArticle)
 
 module.exports = router;

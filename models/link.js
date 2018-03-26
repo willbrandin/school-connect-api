@@ -9,6 +9,11 @@ let linkSchema = new Schema({
   title: {
     type: String,
     required: 'Link needs a title'
+  },
+  school: {
+    type: Schema.Types.ObjectId,
+    ref: 'School',
+    required: true
   }
 });
 

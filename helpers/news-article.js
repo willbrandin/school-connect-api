@@ -37,5 +37,14 @@ exports.createNewsStory = function(request, response) {
    })
 }
 
+exports.updateNewsArticle = function(request, response){
+   database.NewsArticle.findOneAndUpdate({ _id: request.params.newsId }, request.body, {new: true})
+   .then(function(news){
+       response.json(news);
+   })
+   .catch(function(err){
+        response.send(err);
+    })
+}
 
 module.exports = exports
