@@ -13,7 +13,7 @@ let newsArticleSchema = new Schema({
   pubDate: {
     type: Date,
     required: true,
-    default:  Date.now()
+    default:  Date.now
   },
   story: {
     type: String,
