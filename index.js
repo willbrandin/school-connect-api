@@ -4,7 +4,7 @@ var express = require("express"),
 
 
 var schoolRoutes = require("./routes/school");
-
+var newsRoutes = require('./routes/news');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 app.use('/api/schools', schoolRoutes)
+app.use('/api/schools/news', newsRoutes)
 
 var port = 3000;
 app.listen(port, function(){
