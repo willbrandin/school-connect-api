@@ -10,7 +10,7 @@ exports.getSchoolNews = function(request, response){
       if (err){
         response.send(err);
       }
-      response.json(news)
+      response.json(news);
     });
 }
 
@@ -47,7 +47,7 @@ exports.createNewsStory = function(request, response) {
 /// Gets a specific news article with NewsId
 // 'api/news/article/:newsId'
 exports.getNewsStory = function(request, response){
-  database.NewsArticle.findById(request.params.newsId)
+  NewsArticle.findById(request.params.newsId)
   .then(function(newsStory){
     response.json(newsStory);
   })
@@ -60,7 +60,7 @@ exports.getNewsStory = function(request, response){
 /// Updates a specific news article with NewsId
 // 'api/news/article/:newsId'
 exports.updateNewsArticle = function(request, response){
-   database.NewsArticle.findOneAndUpdate({ _id: request.params.newsId }, request.body, {new: true})
+   NewsArticle.findOneAndUpdate({ _id: request.params.newsId }, request.body, {new: true})
    .then(function(news){
        response.json(news);
    })
