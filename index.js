@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/school', schoolRoutes)
 app.use('/api/news', newsRoutes)
 app.use('/api/calendar', calendarRoutes)
-app.use('/api/links', linkRoutes)
+app.use('/api/homelinks', linkRoutes)
 // app.use('/api/config', mobileAppConfigRoutes)
 
 var port = 3000;

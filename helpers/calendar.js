@@ -14,7 +14,7 @@ exports.getSchoolCalendarEvents = function(request, response){
 }
 
 //POST
-// Creates new calendar objc for school
+///Creates new calendar objc for school
 // 'api/calendar/:schoolId'
 exports.createCalendarEvent = function(request, response) {
    database.School.findById(request.params.schoolId)
