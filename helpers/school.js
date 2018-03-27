@@ -93,8 +93,10 @@ exports.deleteSchool = function(request, response){
         response.send(err);
     })
 }
-//GET
 
+//GET
+//gets the specific school info such as name, city, state, etc. 
+// 'api/school/info/:schoolId'
 exports.getSchoolInfo = function(request, response){
     SchoolInfo.find({ school: request.params.schoolId }, function(err, newInfo){
         if (err){
@@ -105,6 +107,8 @@ exports.getSchoolInfo = function(request, response){
 }
 
 //POST
+//creates the specific school info such as name, city, state, etc. 
+// 'api/school/info/:schoolId'
 exports.addSchoolInfo = function(request, response){
     database.School.findById(request.params.schoolId)
    .then(function(school) {
@@ -132,8 +136,8 @@ exports.addSchoolInfo = function(request, response){
 }
 
 //PUT
-/// Updates a config with schoolId
-// 'api/config//:schoolId'
+/// Updates a school info with schoolId
+// 'api/school/info/:schoolId'
 exports.updateSchoolInfo = function(request, response){
     SchoolInfo.findOneAndUpdate({ school: request.params.schoolId }, request.body, {new: true})
     .then(function(newInfo){

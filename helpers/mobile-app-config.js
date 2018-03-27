@@ -50,7 +50,7 @@ exports.createMobileAppConfig = function(request, response) {
 
  //PUT
 /// Updates a config with schoolId
-// 'api/config//:schoolId'
+// 'api/config/:schoolId'
 exports.updateMobileAppConfig = function(request, response){
     Config.findOneAndUpdate({ school: request.params.schoolId }, request.body, {new: true})
     .then(function(newConfig){
