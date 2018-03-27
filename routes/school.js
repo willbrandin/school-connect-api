@@ -7,6 +7,10 @@ router.route('/')
   .get(schoolHelpers.getAllSchools)
   .post(schoolHelpers.createNewSchool)
 
+//
+router.route('/list')
+  .get(schoolHelpers.getListOfSchools)
+
 //REFERS TO SCHOOL OBJECT (SELF)
 router.route('/:schoolId')
   .get(schoolHelpers.getSchool)

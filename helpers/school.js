@@ -28,6 +28,31 @@ exports.createNewSchool = function(request, response) {
    })
 }
 
+
+//GET 
+//Gets the list of schools for user search
+// '/api/school/list?name='name'
+exports.getListOfSchools = function(request, response){
+    var query = request.query['name']
+
+    if (query !== "" && query.length >= 3 ) {
+        var searchKey = new RegExp(query, 'i')
+        database.School.findOne({ name: searchKey }, function (err, school) {
+            if (err) {
+                response.json(err);
+            }
+            if (school != null){
+                response.json({name: school.name, id: school._id});
+            } else {
+                response.json({ message: 'no school matches query' });
+            }
+        });
+    } else {
+        response.json({ message: 'search empty or not long enough' });
+    }
+    
+ }
+
 //GET
 ///Gets a single School obj
 // 'api/school/:schoolId'
