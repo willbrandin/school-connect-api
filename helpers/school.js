@@ -1,5 +1,5 @@
 var database = require('../models');
-
+var SchoolInfo = require('../models/school-info')
 
 //GET
 ///Gets all school news
@@ -92,6 +92,48 @@ exports.deleteSchool = function(request, response){
    .catch(function(err){
         response.send(err);
     })
+}
+
+exports.getSchoolInfo = function(request, response){
+    database.School.findById(request.params.schoolId)
+    .then(function(school){
+        SchoolInfo.findById(school.schoolInfo)
+        .then(function(info){
+            response.json(info);
+        })
+        .catch(function(err){
+            response.json(err);
+        })
+    })
+    .catch(function(err){
+        response.send(err);
+    })
+}
+
+exports.addSchoolInfo = function(request, response){
+    database.School.findById(request.params.schoolId)
+   .then(function(school) {
+     let newInfo = new SchoolInfo();
+     newInfo.name = request.body.name;
+     newInfo.city = request.body.city;
+     newInfo.state = request.body.state;
+     newInfo.school = school._id;
+     newInfo.save(function(err, newInfo){
+       if (err){
+         response.send(err);
+       }
+       school.schoolInfo = newInfo;
+       school.save(function(err){
+         if (err){
+           response.send(err);
+         }
+         response.send({ message: 'New Info saved' })
+       })
+     })
+   })
+   .catch(function(err){
+     response.send(err);
+   })
 }
 
 

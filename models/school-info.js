@@ -13,6 +13,11 @@ let schoolInfoSchema = new Schema({
   state: {
     type: String,
     required: 'State cannot be blank'
+  },
+  school: {
+    type: Schema.Types.ObjectId,
+    ref: 'School',
+    required: true
   }
 });
 

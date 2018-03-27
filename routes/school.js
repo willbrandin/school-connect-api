@@ -17,5 +17,10 @@ router.route('/:schoolId')
   .put(schoolHelpers.updateSchool)
   .delete(schoolHelpers.deleteSchool)
 
+//School info obj
+router.route('/info/:schoolId')
+  .get(schoolHelpers.getSchoolInfo)
+  .post(schoolHelpers.addSchoolInfo)
+
 
 module.exports = router;
