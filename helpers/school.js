@@ -136,7 +136,7 @@ exports.addSchoolInfo = function(request, response){
 }
 
 //PUT
-/// Updates a school info with schoolId
+/// Updates a school info with schoolId. If name changes it will also change the parent 'name' key.
 // 'api/school/info/:schoolId'
 exports.updateSchoolInfo = function(request, response){
     SchoolInfo.findOneAndUpdate({ school: request.params.schoolId }, request.body, {new: true})
