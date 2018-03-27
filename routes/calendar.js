@@ -4,12 +4,12 @@ var calendarHelper = require('../helpers/calendar');
 
 //EVENT AS RELATES TO SCHOOL
 router.route('/:schoolId')
-  .get(calendarHelper.getSchoolCalendarEvents)
-  .post(calendarHelper.createCalendarEvent)
+  .get(calendarHelper.getSchoolCalendarEvents) //gets all events for school obj. //BOTH
+  .post(calendarHelper.createCalendarEvent) //creates a new calendar event. //WEB
 
 //EVENT AS IT RELATES TO (SELF)
 router.route('/event/:eventId')
-  .get(calendarHelper.getCalendarEvent)
-  .put(calendarHelper.updateCalendarEvent)
+  .get(calendarHelper.getCalendarEvent) //gets a single calendar event. Should not be needed in PROD. //WEB
+  .put(calendarHelper.updateCalendarEvent) //updates a single calendar event. //WEB
 
 module.exports = router;

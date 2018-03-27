@@ -93,23 +93,18 @@ exports.deleteSchool = function(request, response){
         response.send(err);
     })
 }
+//GET
 
 exports.getSchoolInfo = function(request, response){
-    database.School.findById(request.params.schoolId)
-    .then(function(school){
-        SchoolInfo.findById(school.schoolInfo)
-        .then(function(info){
-            response.json(info);
-        })
-        .catch(function(err){
-            response.json(err);
-        })
-    })
-    .catch(function(err){
-        response.send(err);
-    })
+    SchoolInfo.find({ school: request.params.schoolId }, function(err, newInfo){
+        if (err){
+          response.send(err);
+        }
+        response.json(newInfo);
+      })
 }
 
+//POST
 exports.addSchoolInfo = function(request, response){
     database.School.findById(request.params.schoolId)
    .then(function(school) {
@@ -135,6 +130,20 @@ exports.addSchoolInfo = function(request, response){
      response.send(err);
    })
 }
+
+//PUT
+/// Updates a config with schoolId
+// 'api/config//:schoolId'
+exports.updateSchoolInfo = function(request, response){
+    SchoolInfo.findOneAndUpdate({ school: request.params.schoolId }, request.body, {new: true})
+    .then(function(newInfo){
+        response.json(newInfo);
+    })
+    .catch(function(err){
+         response.send(err);
+     })
+ }
+
 
 
 module.exports = exports
