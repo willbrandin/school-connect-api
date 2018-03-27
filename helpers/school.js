@@ -141,7 +141,27 @@ exports.addSchoolInfo = function(request, response){
 exports.updateSchoolInfo = function(request, response){
     SchoolInfo.findOneAndUpdate({ school: request.params.schoolId }, request.body, {new: true})
     .then(function(newInfo){
-        response.json(newInfo);
+        database.School.findById(request.params.schoolId)
+        .then(function(school){
+            if (newInfo.name !== school.name) {
+                school.name = newInfo.name
+                school.save(function(err){
+                    if (err){
+                      response.send(err);
+                    }
+                  })
+            }
+            newInfo.save(function(err){
+                if (err){
+                    response.send(err);
+                }
+                response.json(newInfo)
+            })
+        })
+        .catch(function(err){
+            response.json(err);
+        })
+        //response.json(newInfo);
     })
     .catch(function(err){
          response.send(err);
