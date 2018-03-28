@@ -102,7 +102,7 @@ exports.getSchoolInfo = function(request, response){
         if (err){
           response.send(err);
         }
-        response.json(newInfo);
+        response.json(newInfo[0]);
       })
 }
 

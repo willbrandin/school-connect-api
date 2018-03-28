@@ -10,7 +10,7 @@ exports.getMobileAppConfigForSchool = function(request, response){
       if (err){
         response.send(err);
       }
-      response.json(newConfig);
+      response.json(newConfig[0]);
     })
   }
 
