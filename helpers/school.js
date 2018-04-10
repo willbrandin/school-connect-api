@@ -37,12 +37,12 @@ exports.getListOfSchools = function(request, response){
 
     if (query !== "" && query.length >= 3 ) {
         var searchKey = new RegExp(query, 'i')
-        database.School.findOne({ name: searchKey }, function (err, school) {
+        database.School.find({ name: searchKey }, 'name id', function (err, school) {
             if (err) {
                 response.json(err);
             }
             if (school != null){
-                response.json({name: school.name, id: school._id});
+                response.json(school);
             } else {
                 response.json({ message: 'no school matches query' });
             }
