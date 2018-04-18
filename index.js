@@ -19,7 +19,6 @@ app.use('/api/calendar', calendarRoutes)
 app.use('/api/homelinks', linkRoutes)
 app.use('/api/config', mobileAppConfigRoutes)
 
-var port = 3000;
-app.listen(port, function(){
-    console.log("App running on port" + port);
+app.listen(process.env.PORT || 5000, function(){
+    console.log("App running");
 })
