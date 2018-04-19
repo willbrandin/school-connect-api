@@ -43,6 +43,7 @@ exports.createCalendarEvent = function(request, response) {
    })
    .catch(function(err){
      response.send(err);
+     
    })
 }
 
