@@ -2,6 +2,8 @@ var express = require("express"),
     app = express(),
     bodyParser = require("body-parser");
 
+var ev = require('dotenv').config();
+
 
 var schoolRoutes = require("./routes/school");
 var newsRoutes = require('./routes/news');

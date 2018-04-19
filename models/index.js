@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 mongoose.set('debug', true);
 
-mongoose.connect('mongodb://admin:admin@ds147589.mlab.com:47589/school-connect-api');
+mongoose.connect(process.env.DATABASE_URL);
 
 mongoose.Promise = Promise;
 
