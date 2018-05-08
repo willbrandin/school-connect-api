@@ -6,6 +6,7 @@ var CalendarEvent = require('./calendar-event');
 var Link = require('./link');
 var SchoolInfo = require('./school-info');
 var Messages = require('./message');
+var AdminUser = require('./admin-user');
 
 let Schema = mongoose.Schema;
 
@@ -38,7 +39,11 @@ var schoolSchema = new mongoose.Schema({
   messages: [{
     type: Schema.Types.ObjectId,
     ref: 'Messages'
-  }]
+  }],
+  admin: {
+    type: Schema.Types.ObjectId,
+    ref: 'AdminUser',
+  }
   //Add info that contains city, state info, relates to school itself.
 });
 

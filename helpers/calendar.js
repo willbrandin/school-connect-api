@@ -28,21 +28,21 @@ exports.createCalendarEvent = function(request, response) {
      newEvent.location = request.body.location;
      newEvent.school = school._id;
 
-     newEvent.save(function(err, newStory){
+     newEvent.save(function(err, newEvent){
        if (err){
-         response.send(err);
+         response.send(err + "not saving");
        }
        school.calendarEvents.push(newEvent)
        school.save(function(err){
          if (err){
-           response.send(err);
+           response.send(err + "not saving new school" + newEvent);
          }
          response.send({ message: 'New Event saved' })
        })
      })
    })
    .catch(function(err){
-     response.send(err);
+     response.send(err + "Cant find school");
      
    })
 }
