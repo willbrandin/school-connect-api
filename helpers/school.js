@@ -29,6 +29,7 @@ exports.createNewSchool = function(request, response) {
 }
 
 
+
 //GET 
 //Gets the list of schools for user search
 // '/api/school/list?name='name'

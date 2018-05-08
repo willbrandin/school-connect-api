@@ -1,11 +1,12 @@
 var express = require("express");
 var router = express.Router();
 var schoolHelpers = require('../helpers/school');
+const { loginRequired, ensureCorrectUser } = require("../middleware/auth")
 
 
 router.route('/')
   .get(schoolHelpers.getAllSchools) //not needed in PROD
-  .post(schoolHelpers.createNewSchool) //Needed upon account Init. only //WEB on init
+  .post(loginRequired, schoolHelpers.createNewSchool) //Needed upon account Init. only //WEB on init
 
 //
 router.route('/list')
