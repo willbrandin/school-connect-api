@@ -5,4 +5,4 @@ var authHelper = require('../helpers/auth');
 router.post('/signup', authHelper.signUp);
 router.post('/signin', authHelper.signIn);
 
-module.exports = router
+module.exports = router 
