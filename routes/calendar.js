@@ -11,6 +11,6 @@ router.route('/:schoolId')
 //EVENT AS IT RELATES TO (SELF)
 router.route('/event/:eventId')
   .get(calendarHelper.getCalendarEvent) //gets a single calendar event. Should not be needed in PROD. //WEB
-  .put(calendarHelper.updateCalendarEvent) //updates a single calendar event. //WEB
+  .put(loginRequired, ensureCorrectUser, calendarHelper.updateCalendarEvent) //updates a single calendar event. //WEB
 
 module.exports = router;

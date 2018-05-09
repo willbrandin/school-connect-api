@@ -15,13 +15,13 @@ router.route('/list')
 //REFERS TO SCHOOL OBJECT (SELF)
 router.route('/:schoolId')
   .get(schoolHelpers.getSchool) //gets the school main obj should not be needed heavily in PROD // n/a in PROD
-  .put(schoolHelpers.updateSchool) //updates the school obj. Only //WEB
-  .delete(schoolHelpers.deleteSchool) //Needs to delete school and related data. Only //WEB 
+  .put(loginRequired, ensureCorrectUser, schoolHelpers.updateSchool) //updates the school obj. Only //WEB
+  .delete(loginRequired, ensureCorrectUser, schoolHelpers.deleteSchool) //Needs to delete school and related data. Only //WEB 
 
 //School info obj
 router.route('/info/:schoolId')
   .get(schoolHelpers.getSchoolInfo) //Gets the name, city, state info needed for App school selection and for web. PROD. //BOTH
-  .post(schoolHelpers.addSchoolInfo)  //Adds new school info. Only needed for account Init from WEB. //WEB on init
-  .put(schoolHelpers.updateSchoolInfo) //Used to update the school info. Only from WEB. //WEB
+  .post(loginRequired, ensureCorrectUser, schoolHelpers.addSchoolInfo)  //Adds new school info. Only needed for account Init from WEB. //WEB on init
+  .put(loginRequired, ensureCorrectUser, schoolHelpers.updateSchoolInfo) //Used to update the school info. Only from WEB. //WEB
 
 module.exports = router;
