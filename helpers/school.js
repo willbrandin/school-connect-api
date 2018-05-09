@@ -70,7 +70,6 @@ exports.getSchool = function(request, response){
 //PUT
 ///Updates a School Obj
 // 'api/school/:schoolId'
-
 exports.updateSchool = function(request, response){
    database.School.findOneAndUpdate({_id: request.params.schoolId}, request.body, {new: true})
    .then(function(school){

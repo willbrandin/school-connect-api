@@ -47,7 +47,10 @@ exports.signIn = async function(request, response, next){
   //if matches, sign them in.
   //signing and sending a token
 }
-
+//POST
+//Creates a new user and new school.
+//Once they are added to DB the object id's are saved to each other
+// 'api/auth/signup'
 exports.signUp = async function(request, response, next){
   const user = db.AdminUser.create(request.body.user)
     .then(function(newUser){
@@ -63,6 +66,7 @@ exports.signUp = async function(request, response, next){
           }
           newSchool.save(function(err, newSchool){
             if(err){
+              //TODO: - Needs to delete the user from the DB
               response.send(err + "Can't save School, but saved user")
             }
             response.send(newSchool + newUser);
@@ -79,42 +83,4 @@ exports.signUp = async function(request, response, next){
         message: err.message
       })
     })
-
-  // try {
-  //   let user = await db.AdminUser.create(request.body);
-    
-  //   let token = jwt.sign(
-  //     {
-  //       id,
-  //       email,
-  //       firstName,
-  //       lastName
-  //     }, 
-  //     process.env.SECRET_KEY
-  //   );
-
-  //   return response.status(200).json({
-  //     id,
-  //     email,
-  //     firstName,
-  //     lastName,
-  //     school,
-  //     token
-  //   })
-  //   // create a user
-  //   // create a token
-  // } catch(err){
-
-  //   if (err.code === 11000){
-  //     err.message = "Sorry that username and/or email is takenf"
-  //   }
-  //   return next({
-  //     status: 400,
-  //     message: err.message
-  //   })
-  //   // see what err
-  //   //respond with email already taken
-  //   //or generic
-  //   //helpful error message
-  // }
 };

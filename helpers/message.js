@@ -26,7 +26,7 @@ exports.createNewMessage = function(request, response){
           school.messages.push(newMessage)
           school.save(function(err){
             if (err){
-              response.send(err);
+              response.send(err + "school not saving message but message is saved" + newMessage);
             }
             response.send({ message: 'New Message saved'})
           })

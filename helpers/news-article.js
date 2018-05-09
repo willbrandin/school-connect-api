@@ -32,7 +32,7 @@ exports.createNewsStory = function(request, response) {
        school.newsArticles.push(newStory)
        school.save(function(err){
          if (err){
-           response.send(err);
+           response.send(err + "Article saved but school not saving reference to it" + newStory);
          }
          response.send({ message: 'New Story saved' })
        })

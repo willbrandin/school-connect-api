@@ -32,7 +32,8 @@ exports.createHomeLink = function(request, response) {
        school.links.push(newLink)
        school.save(function(err){
          if (err){
-           response.send(err);
+           //TODO: - delete the link
+           response.send(err + "School not saving link but link is saved" + newLink);
          }
          response.send({ message: 'New Link saved' })
        })

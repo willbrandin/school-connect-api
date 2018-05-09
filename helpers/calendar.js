@@ -35,6 +35,7 @@ exports.createCalendarEvent = function(request, response) {
        school.calendarEvents.push(newEvent)
        school.save(function(err){
          if (err){
+           //TODO: - delete calendar event. Try again Message
            response.send(err + "not saving new school" + newEvent);
          }
          response.send({ message: 'New Event saved' })

@@ -36,7 +36,7 @@ exports.createMobileAppConfig = function(request, response) {
         school.mobileAppConfig = newConfig
         school.save(function(err){
           if (err){
-            response.send(err);
+            response.send(err + "School not saving config. But config is saved." + newConfig);
           }
           response.send({ message: 'New Config saved' })
         })
