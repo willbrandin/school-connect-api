@@ -69,7 +69,7 @@ exports.signUp = async function(request, response, next){
               //TODO: - Needs to delete the user from the DB
               response.send(err + "Can't save School, but saved user")
             }
-            response.send(newSchool + newUser);
+            response.json(newSchool, newUser);
           })
         })
       })
