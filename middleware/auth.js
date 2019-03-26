@@ -4,11 +4,11 @@ const jwt = require('jsonwebtoken');
 //authorize
 //make sure user is logged in
 
-exports.loginRequired = function(request, response, next){
+exports.loginRequired = (request, response, next) => {
   try {
     const token = request.headers.authorization.split(" ")[1];
-    jwt.verify(token, process.env.SECRET_KEY, function(err, decoded){
-      if (decoded){
+    jwt.verify(token, process.env.SECRET_KEY, function(err, decoded) {
+      if (decoded) {
         return next();
       } else {
         return next({
@@ -17,7 +17,7 @@ exports.loginRequired = function(request, response, next){
         })
       }
     })
-  } catch(error){
+  } catch(error) {
     return next({
       status: 401,
       message: "Please log in first"
@@ -27,12 +27,11 @@ exports.loginRequired = function(request, response, next){
 
 //authenticate
 //make sure we get correct user
-exports.ensureCorrectUser = function(request, response, next){
+exports.ensureCorrectUser = (request, response, next) => {
   try {
     const token = request.headers.authorization.split(" ")[1];
-    jwt.verify(token, process.env.SECRET_KEY, function(err, decoded){
-  
-      if (decoded && decoded.school === request.params.schoolId){
+    jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+      if (decoded && decoded.school === request.params.schoolId) {
         return next();
       } else {
         return next({

@@ -1,7 +1,6 @@
 var database = require('../models');
 var Message = require('../models/message');
 
-
 exports.getMessages = function(request, response){
   Message.find({ school: request.params.schoolId }, function(err, messages){
     if (err){
@@ -10,7 +9,6 @@ exports.getMessages = function(request, response){
     response.json(messages);
   })
 }
-
 
 exports.createNewMessage = function(request, response){
     database.School.findById(request.params.schoolId)
@@ -28,7 +26,7 @@ exports.createNewMessage = function(request, response){
             if (err){
               response.send(err + "school not saving message but message is saved" + newMessage);
             }
-            response.send({ message: 'New Message saved'})
+            response.send({ message: 'New Message saved' })
           })
         })
       })

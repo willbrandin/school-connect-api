@@ -16,7 +16,7 @@ router.route('/list')
 router.route('/:schoolId')
   .get(schoolHelpers.getSchool) //gets the school main obj should not be needed heavily in PROD // n/a in PROD
   .put(loginRequired, ensureCorrectUser, schoolHelpers.updateSchool) //updates the school obj. Only //WEB
-  .delete(loginRequired, ensureCorrectUser, schoolHelpers.deleteSchool) //Needs to delete school and related data. Only //WEB 
+  .delete(loginRequired, ensureCorrectUser, schoolHelpers.deleteSchool) //Needs to delete school and related data. Only //WEB
 
 //School info obj
 router.route('/info/:schoolId')
